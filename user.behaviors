@@ -1,0 +1,66 @@
+;; User behaviors
+;; -----------------------------
+;; Behaviors are stored as a set of diffs that are merged together
+;; to create the final set of functionality that makes up Light Table. You can
+;; modify these diffs to either add or subtract functionality.
+;;
+;; Behaviors are added to tags, objects with those tags then automatically gain
+;; whatever logic the behavior imparts. To see a list of user-level behaviors,
+;; start typing a word related to the functionality you want in between the square
+;; brackets (e.g. "theme").
+
+[
+ ;; The app tag is kind of like global scope. You assign behaviors that affect
+ ;; all of Light Table to it.
+ [:app :lt.objs.plugins/load-js "user_compiled.js"]
+ [:app :lt.objs.settings/pair-keymap-diffs]
+
+ ;; The editor tag is applied to all editors
+ [:editor :lt.objs.editor/no-wrap]
+ [:editor :lt.objs.style/set-theme "cheerup"]
+ [:editor :lt.objs.editor/highlight-current-line]
+
+ ;; Here we can add behaviors to just clojure editors
+ [:editor.clojure :lt.plugins.clojure/print-length 1000]
+
+ ;; Behaviors specific to a user-defined object
+ [:user.hello :lt.plugins.user/on-close-destroy]
+
+ ;; To subtract a behavior, prefix the name with '-' e.g.
+ ;;  [:app :-lt.objs.intro/show-intro]
+ [:editor :lt.plugins.vim/activate-vim]
+ [:app :lt.plugins.vim/map-keys {"0" "^",
+                                    ;; (t)oggle
+                                    "<Space>tb" ":ltexec user.open-buffers"
+                                    "<Space>tw" ":ltexec workspace.show"
+                                    "<Space>tc" ":ltexec toggle-console"
+                                    "<Space>tl" ":ltexec user.toggle-line-numbers"
+                                    ;; (d)ev
+                                    "<Space>ds" ":ltexec user.clojurescript-spy"
+                                    "<Space>dS" ":ltexec user.clojurescript-unspy"
+                                    ;; (f)ind
+                                    "<Space>fd" ":ltexec user.search-current-directory"
+                                    "<Space>ff" ":ltexec user.search-current-file"
+                                    "<Space>fF" ":ltexec user.search-current-folder"
+                                    "<Space>fu" ":ltexec user.search-current-folder-for-fn-usage"
+                                    "<Space>fw" ":ltexec user.search-current-file-with-current-word" ; same as vim's [I
+                                    "<Space>fW" ":ltexec user.search-current-folder-with-current-word"
+                                    "<Space>l" ":ltexec user.connect-to-lt-ui"
+                                    ;; (j)ump
+                                    "<Space>jt" ":ltexec user.jump-to-ctag"
+                                    "<Space>jc" ":ltexec user.jump-to-command"
+                                    "<Space>jb" ":ltexec user.jump-to-behavior"
+                                    "<Space>jo" ":ltexec user.jump-to-object"
+                                    ;; (o)pen
+                                    "<Space>of" ":ltexec claire-show"
+                                    "<Space>op" ":ltexec photon.add-folder"
+                                    "<Space>oP" ":ltexec photon.remove-folder"
+                                    "<Space>ot" ":ltexec tabset.new"
+                                    "<Space>or" ":ltexec user.show-registers"
+                                    "<Space>ou" ":ltexec user.system-open-current-url"
+                                    "<Space>oU" ":ltexec user.tab-open-current-url"
+                                    "<Space>ov" ":ltexec user.vertical-split-current-file" ; sams as vim's C-w v
+                                    "<Space>ow" ":ltexec workspace.show-recents"
+                                    "<Space>r" ":ltexec user.refresh-current-workspace-folder"}]
+]
+
