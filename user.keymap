@@ -21,6 +21,7 @@
  [:app "ctrl-w" :workspace.show]
  [:app "ctrl-c" :toggle-console]
  [:app "ctrl-b" :add-browser-tab :browser.url-bar.focus]
+ [:app "ctrl-s" :gitlight-status-toggle]
  [:app "cmd-ctrl-f" :window.fullscreen]
 
  ;; Bindings that react when editor has focus
