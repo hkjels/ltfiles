@@ -15,16 +15,22 @@
  ;; To subtract a binding, prefix the key with '-'  e.g.
  ;;  [:app "-ctrl-shift-d" :docs.search.show]
 
+ ;; Bindings that react for all parts of lighttable
+ [:app "-pmeta-o" :navigate-workspace-transient]
+ [:app "ctrl-o" :navigate-workspace-transient]
+ [:app "ctrl-w" :workspace.show]
+ [:app "ctrl-c" :toggle-console]
+ [:app "ctrl-b" :add-browser-tab :browser.url-bar.focus]
  [:app "cmd-ctrl-f" :window.fullscreen]
 
- [:app "cmd-b" :add-browser-tab :browser.url-bar.focus]
-
- ;; Navigation
+ ;; Bindings that react when editor has focus
+ [:editor.keys.normal "ctrl-k" :auto-complete]
+ [:filter-list.input "ctrl-n" (:filter-list.input.move-selection 1)]
+ [:filter-list.input "ctrl-p" (:filter-list.input.move-selection -1)]
  [:editor "left" :tabs.prev]
  [:editor "right" :tabs.next]
  [:editor "ctrl-h" :tabset.prev]
  [:editor "ctrl-l" :tabset.next]
-
  [:editor "alt-w" :editor.watch.watch-selection]
  [:editor "alt-shift-w" :editor.watch.unwatch]
 

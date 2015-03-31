@@ -10,24 +10,29 @@
 ;; brackets (e.g. "theme").
 
 [
+ ;; To subtract a behavior, prefix the name with '-' e.g.
+ ;;  [:app :-lt.objs.intro/show-intro]
+ [:app :-lt.objs.intro/show-intro]
+
  ;; The app tag is kind of like global scope. You assign behaviors that affect
  ;; all of Light Table to it.
  [:app :lt.objs.plugins/load-js "user_compiled.js"]
  [:app :lt.objs.settings/pair-keymap-diffs]
 
  ;; The editor tag is applied to all editors
+ [:editor :lt.objs.style/font-settings "Monaco" 9 1.5]
  [:editor :lt.objs.editor/no-wrap]
  [:editor :lt.objs.style/set-theme "cheerup"]
  [:editor :lt.objs.editor/highlight-current-line]
+ [:editor :lt.objs.editor/tab-settings false 2 2]
 
- ;; Here we can add behaviors to just clojure editors
+ ;; Here we can add behaviors to file-specific editors
  [:editor.clojure :lt.plugins.clojure/print-length 1000]
+ [:editor.html :lt.objs.editor/tab-settings false 2 2]
 
  ;; Behaviors specific to a user-defined object
  [:user.hello :lt.plugins.user/on-close-destroy]
 
- ;; To subtract a behavior, prefix the name with '-' e.g.
- ;;  [:app :-lt.objs.intro/show-intro]
  [:editor :lt.plugins.vim/activate-vim]
  [:app :lt.plugins.vim/map-keys {"0" "^",
                                     ;; (t)oggle
@@ -53,6 +58,7 @@
                                     "<Space>jo" ":ltexec user.jump-to-object"
                                     ;; (o)pen
                                     "<Space>of" ":ltexec claire-show"
+                                    "<Space>oF" ":ltexec navigate-workspace-transient"
                                     "<Space>op" ":ltexec photon.add-folder"
                                     "<Space>oP" ":ltexec photon.remove-folder"
                                     "<Space>ot" ":ltexec tabset.new"
