@@ -20,9 +20,11 @@
  [:app "ctrl-o" :navigate-workspace-transient]
  [:app "ctrl-w" :workspace.show]
  [:app "ctrl-c" :toggle-console]
- [:app "ctrl-b" :add-browser-tab :browser.url-bar.focus]
  [:app "ctrl-s" :gitlight-status-toggle]
+ [:app "cmd-b" :add-browser-tab :browser.url-bar.focus]
  [:app "cmd-ctrl-f" :window.fullscreen]
+ [:app "cmd-shift-left" :tabs.prev]
+ [:app "cmd-shift-right" :tabs.next]
 
  ;; Bindings that react when editor has focus
  [:editor.keys.normal "ctrl-k" :auto-complete]
